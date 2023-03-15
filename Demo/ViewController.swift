@@ -66,8 +66,6 @@ class ViewController : UIViewController {
             let encoder = JSONEncoder()
             let data = try encoder.encode(sourceState)
             UserDefaults.standard.set(data, forKey: "sourceState")
-            print(sourceState)
-            print("saved")
         } catch {
             
             print("Error saving dictionary to UserDefaults: \(error)")
@@ -129,11 +127,10 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
         } else if tableView == rightTableView {
             if let selectedIndex = sourceState[selectedItemIndex], indexPath.row == selectedIndex {
                 sourceState[selectedItemIndex] = nil
-                saveState()
             } else {
                 sourceState[selectedItemIndex] = indexPath.row
-                saveState()
             }
+            saveState()
             rightTableView.reloadData()
         }
     }
