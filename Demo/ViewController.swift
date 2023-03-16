@@ -18,12 +18,12 @@ class ViewController : UIViewController {
         return button
     }()
     
-    var options = ["Option 1", "Option 2", "Option 3"]
-    var items = ["Item 1", "Item 2", "Item 3"]
+    private let options = ["Option 1", "Option 2", "Option 3"]
+    private let items = ["Item 1", "Item 2", "Item 3"]
     
-    var sourceState : [Int: IndexPath] = [:]
+    private var sourceState : [Int: IndexPath] = [:]
     
-    var selectedItemIndex = -1
+    private var selectedItemIndex = -1
 
     private let leftTableView : UITableView = {
         let tableView = UITableView()
