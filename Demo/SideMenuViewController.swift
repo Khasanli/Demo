@@ -46,20 +46,21 @@ class SideMenuViewController: UIViewController {
 
         view.addSubview(homeButton)
         homeButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        homeButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -40).isActive = true
-        homeButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        homeButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         homeButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
-        
+        homeButton.widthAnchor.constraint(equalToConstant: 260).isActive = true
+
         view.addSubview(settingButton)
         settingButton.topAnchor.constraint(equalTo: homeButton.bottomAnchor, constant: 20).isActive = true
-        settingButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -40).isActive = true
-        settingButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        settingButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         settingButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
-
+        settingButton.widthAnchor.constraint(equalTo: homeButton.widthAnchor).isActive = true
+        
         view.addSubview(profileButton)
         profileButton.topAnchor.constraint(equalTo: settingButton.bottomAnchor, constant: 20).isActive = true
-        profileButton.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -40).isActive = true
-        profileButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        profileButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         profileButton.heightAnchor.constraint(equalToConstant: 80).isActive = true
+        profileButton.widthAnchor.constraint(equalTo: homeButton.widthAnchor).isActive = true
     }
+
 }

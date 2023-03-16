@@ -16,6 +16,7 @@ class ContainerViewController: UINavigationController {
     private let mainViewController = ViewController()
     
     private let sideMenuWidth: CGFloat = 300
+    private var trailingConstraint : NSLayoutConstraint?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,22 +29,30 @@ class ContainerViewController: UINavigationController {
         view.addSubview(mainViewController.view)
         
         mainViewController.sideButton.addTarget(self, action: #selector(toggleSideMenu), for: .touchUpInside)
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        mainViewController.view.frame = CGRect(x: sideMenuIsOpen ? sideMenuWidth : 0, y: 0, width: view.frame.width - (sideMenuIsOpen ? sideMenuWidth : 0), height: view.frame.height)
-        sideMenuViewController.view.frame = CGRect(x: sideMenuIsOpen ? 0 : -sideMenuWidth, y: 0, width: sideMenuWidth, height: view.frame.height)
+        mainViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        sideMenuViewController.view.translatesAutoresizingMaskIntoConstraints = false
+
+        sideMenuViewController.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        sideMenuViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        sideMenuViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        trailingConstraint = sideMenuViewController.view.trailingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
+        trailingConstraint?.isActive = true
+        
+        mainViewController.view.leadingAnchor.constraint(equalTo: sideMenuViewController.view.trailingAnchor).isActive = true
+        mainViewController.view.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        mainViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        mainViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
     }
     
     @objc func toggleSideMenu() {
         sideMenuIsOpen.toggle()
         let width = sideMenuIsOpen ? sideMenuWidth : 0
         
+        trailingConstraint?.constant = width
+        
         UIView.animate(withDuration: animationDuration) {
-            self.mainViewController.view.frame = CGRect(x: width, y: 0, width: self.view.frame.width - width, height: self.view.frame.height)
-            self.sideMenuViewController.view.frame = CGRect(x: self.sideMenuIsOpen ? 0 : -self.sideMenuWidth, y: 0, width: self.sideMenuWidth, height: self.view.frame.height)
             self.view.layoutIfNeeded()
         }
+
     }
 }
