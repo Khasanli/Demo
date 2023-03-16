@@ -9,10 +9,19 @@ import UIKit
 
 class ViewController : UIViewController {
     
+    let sideButton : UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .darkGray
+        button.setTitle("->", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        return button
+    }()
+    
     var options = ["Option 1", "Option 2", "Option 3"]
     var items = ["Item 1", "Item 2", "Item 3"]
     
-    var sourceState : [Int: Int] = [:]
+    var sourceState : [Int: IndexPath] = [:]
     
     var selectedItemIndex = -1
 
@@ -42,16 +51,17 @@ class ViewController : UIViewController {
         leftTableView.dataSource = self
         rightTableView.delegate = self
         rightTableView.dataSource = self
-        
+
         sourceState = getState()
         setView()
     }
     
-    private func getState() -> [Int: Int] {
+    private func getState() -> [Int: IndexPath] {
         if let data = UserDefaults.standard.data(forKey: "sourceState") {
             do {
                 let decoder = JSONDecoder()
-                let dict = try decoder.decode([Int: Int].self, from: data)
+                let dict = try decoder.decode([Int: IndexPath].self, from: data)
+                
                 return dict
             } catch {
                 print("Error retrieving dictionary from UserDefaults: \(error)")
@@ -73,17 +83,26 @@ class ViewController : UIViewController {
     }
     
     private func setView(){
+        view.addSubview(sideButton)
+        sideButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        sideButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 50).isActive = true
+        sideButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        sideButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        sideButton.layer.cornerRadius = 30
+        
         view.addSubview(leftTableView)
-        leftTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        leftTableView.topAnchor.constraint(equalTo: sideButton.bottomAnchor, constant: 20).isActive = true
         leftTableView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         leftTableView.rightAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         leftTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
 
         view.addSubview(rightTableView)
-        rightTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        rightTableView.topAnchor.constraint(equalTo: sideButton.bottomAnchor, constant: 20).isActive = true
         rightTableView.leftAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         rightTableView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         rightTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        
+        
     }
 }
 
@@ -109,7 +128,7 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: "rightTableViewCell", for: indexPath)
             
             cell.textLabel?.text = options[indexPath.row]
-            if let selectedIndex = sourceState[selectedItemIndex], indexPath.row == selectedIndex{
+            if let selectedIndex = sourceState[selectedItemIndex], indexPath == selectedIndex{
                 cell.accessoryType = .checkmark
             } else {
                 cell.accessoryType = .none
@@ -125,10 +144,10 @@ extension ViewController : UITableViewDataSource, UITableViewDelegate {
             selectedItemIndex = indexPath.row
             rightTableView.reloadData()
         } else if tableView == rightTableView {
-            if let selectedIndex = sourceState[selectedItemIndex], indexPath.row == selectedIndex {
+            if let selectedIndex = sourceState[selectedItemIndex], indexPath == selectedIndex {
                 sourceState[selectedItemIndex] = nil
             } else {
-                sourceState[selectedItemIndex] = indexPath.row
+                sourceState[selectedItemIndex] = indexPath
             }
             saveState()
             rightTableView.reloadData()
