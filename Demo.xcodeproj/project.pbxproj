@@ -14,6 +14,8 @@
 		AC4A4D7729C1F32D00C8F2B6 /* DemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4A4D7629C1F32D00C8F2B6 /* DemoTests.swift */; };
 		AC4A4D8129C1F32D00C8F2B6 /* DemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4A4D8029C1F32D00C8F2B6 /* DemoUITests.swift */; };
 		AC4A4D8329C1F32D00C8F2B6 /* DemoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC4A4D8229C1F32D00C8F2B6 /* DemoUITestsLaunchTests.swift */; };
+		AC9C68A629CA057B00814684 /* ThirdTaskViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9C68A529CA057B00814684 /* ThirdTaskViewController.swift */; };
+		AC9C68A829CA058D00814684 /* SwipeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9C68A729CA058D00814684 /* SwipeView.swift */; };
 		ACC562F729C27CB8007F0C54 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC562F629C27CB8007F0C54 /* SideMenuViewController.swift */; };
 		ACC562F929C27CF6007F0C54 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC562F829C27CF6007F0C54 /* ContainerViewController.swift */; };
 		ACD351BD29C22AB20007CEC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD351BC29C22AB20007CEC9 /* ViewController.swift */; };
@@ -48,6 +50,8 @@
 		AC4A4D7C29C1F32D00C8F2B6 /* DemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC4A4D8029C1F32D00C8F2B6 /* DemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUITests.swift; sourceTree = "<group>"; };
 		AC4A4D8229C1F32D00C8F2B6 /* DemoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		AC9C68A529CA057B00814684 /* ThirdTaskViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdTaskViewController.swift; sourceTree = "<group>"; };
+		AC9C68A729CA058D00814684 /* SwipeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeView.swift; sourceTree = "<group>"; };
 		ACC562F629C27CB8007F0C54 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		ACC562F829C27CF6007F0C54 /* ContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		ACD351BC29C22AB20007CEC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +110,8 @@
 				ACD351BC29C22AB20007CEC9 /* ViewController.swift */,
 				ACC562F629C27CB8007F0C54 /* SideMenuViewController.swift */,
 				ACC562F829C27CF6007F0C54 /* ContainerViewController.swift */,
+				AC9C68A529CA057B00814684 /* ThirdTaskViewController.swift */,
+				AC9C68A729CA058D00814684 /* SwipeView.swift */,
 			);
 			path = Demo;
 			sourceTree = "<group>";
@@ -277,7 +283,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				ACD351BD29C22AB20007CEC9 /* ViewController.swift in Sources */,
+				AC9C68A629CA057B00814684 /* ThirdTaskViewController.swift in Sources */,
 				AC4A4D6029C1F32C00C8F2B6 /* AppDelegate.swift in Sources */,
+				AC9C68A829CA058D00814684 /* SwipeView.swift in Sources */,
 				AC4A4D6229C1F32C00C8F2B6 /* SceneDelegate.swift in Sources */,
 				ACC562F729C27CB8007F0C54 /* SideMenuViewController.swift in Sources */,
 				ACC562F929C27CF6007F0C54 /* ContainerViewController.swift in Sources */,
